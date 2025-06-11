@@ -39,6 +39,12 @@ public class Game {
         @Builder.Default
         private List<GamePrice> prices = new ArrayList<>();
 
+        @ElementCollection(fetch = FetchType.LAZY)
+        @CollectionTable(name = "game_platforms", joinColumns = @JoinColumn(name = "game_id"))
+        @Column(name = "platform", nullable = false)
+        @Builder.Default
+        private List<String> supportedPlatforms = new ArrayList<>();
+
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
@@ -55,5 +61,13 @@ public class Game {
         public void setPrices(List<GamePrice> newPrices) {
                 this.prices.clear();
                 this.prices.addAll(newPrices);
+        }
+
+        /** 지원 플랫폼 목록을 추가하거나 교체하는 비즈니스 메서드 */
+        public void setSupportedPlatforms(List<String> newPlatforms) {
+                this.supportedPlatforms.clear();
+                if (newPlatforms != null) {
+                        this.supportedPlatforms.addAll(newPlatforms);
+                }
         }
 }

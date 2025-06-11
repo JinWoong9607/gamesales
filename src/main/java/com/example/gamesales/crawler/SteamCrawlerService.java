@@ -48,15 +48,15 @@ public class SteamCrawlerService {
             try {
                 String html = webClient.get()
                         .uri(uriBuilder -> uriBuilder
-                                .scheme("https")
-                                .host("store.steampowered.com")
+                                // • scheme()와 host() 호출 제거
                                 .path("/search/")
                                 .queryParam("filter", "topsellers")
                                 .queryParam("cc", "kr")
-                                .queryParam("category1", "998") // 유료 게임만
+                                .queryParam("category1", "998")
                                 .queryParam("start", start)
                                 .queryParam("count", 50)
-                                .build())
+                                .build()
+                        )
                         .retrieve()
                         .bodyToMono(String.class)
                         .block();

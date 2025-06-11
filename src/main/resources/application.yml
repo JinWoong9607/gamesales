@@ -1,3 +1,11 @@
 spring:
   codec:
     max-in-memory-size: 16MB
+  config:
+    import: optional:file:.env    # 프로젝트 루트의 .env 파일을 로드
+
+igdb:
+  client:
+    id: ${IGDB_CLIENT_ID}         # .env에서 로드된 값 사용
+    token: ${IGDB_AUTH_TOKEN}
+    base-url: ${IGDB_BASE_URL:https://api.igdb.com/v4}
