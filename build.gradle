@@ -29,6 +29,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.junit.jupiter:junit-jupiter'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.jsoup:jsoup:1.15.4'
@@ -36,6 +37,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'javax.servlet:javax.servlet-api:4.0.1'
 	testImplementation 'com.github.tomakehurst:wiremock-jre8-standalone:2.35.0'
+}
+
+test {
+	useJUnitPlatform()
+	// 통합 테스트 프로필 설정
+	systemProperty 'spring.profiles.active', 'integration'
 }
 
 tasks.named('test') {

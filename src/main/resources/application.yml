@@ -7,5 +7,5 @@ spring:
 igdb:
   client:
     id: ${IGDB_CLIENT_ID}         # .env에서 로드된 값 사용
-    token: ${IGDB_AUTH_TOKEN}
+    secret: ${IGDB_CLIENT_SECRET}
     base-url: ${IGDB_BASE_URL:https://api.igdb.com/v4}

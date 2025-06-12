@@ -1,0 +1,10 @@
+spring:
+  config:
+    import:
+      - optional:file:.env    # 👈 리스트로 변경
+
+igdb:
+  client:
+    id: ${IGDB_CLIENT_ID}        # .env 또는 환경 변수에서 로드
+    secret: ${IGDB_CLIENT_SECRET}
+    base-url: ${IGDB_BASE_URL:https://api.igdb.com/v4}

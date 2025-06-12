@@ -16,7 +16,7 @@ public class IgdbProperties {
     @NotBlank
     private String id;
     @NotBlank
-    private String token;
+    private String secret;
     @NotBlank
     private String baseUrl;
 }
